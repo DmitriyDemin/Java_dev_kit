@@ -1,17 +1,19 @@
-package les2;
+package common;
 
 import javax.swing.*;
 import java.awt.*;
 
 public class MainCanvas extends JPanel {
-    private final MainWindow controller;
+
+    private final CanvasRepainrListener controller;
     private long lastFrameTime;
+    private  Color color;
 
 
-
-    MainCanvas(MainWindow controller){
-        setBackground(Color.BLUE);
+    public MainCanvas(CanvasRepainrListener controller){
+        setBackground(color);
         this.controller = controller;
+        lastFrameTime = System.nanoTime();
     }
 
     @Override
@@ -27,6 +29,7 @@ public class MainCanvas extends JPanel {
         controller.oneDrowFrame(this, g, deltaTime);
         lastFrameTime = System.nanoTime();
 
+
         repaint(); // while (true)
     }
 
@@ -35,5 +38,7 @@ public class MainCanvas extends JPanel {
     public int getTop(){return 0;}
     public int getBottom(){return getHeight()-1;}
 
-
+    public void setColor(Color color) {
+        this.color = color;
+    }
 }

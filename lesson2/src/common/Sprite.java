@@ -1,8 +1,8 @@
-package les2;
+package common;
 
 import java.awt.*;
 
-public abstract class Sprite {
+public abstract class Sprite implements Interactable {
     protected float x;
     protected float y;
     protected float halfWigth;
@@ -24,8 +24,11 @@ public abstract class Sprite {
     protected float getHalfWigth(){return 2f*halfWigth;}
     protected float getHalfHeight() {return 2f*halfHeight;}
 
-    void update(MainCanvas canvas, float deltaTime){};
-    void render(MainCanvas canvas, Graphics g){};
+    @Override
+    public void update(MainCanvas canvas, float deltaTime){};
+
+    @Override
+    public void render(MainCanvas canvas, Graphics g){};
 
 
 
