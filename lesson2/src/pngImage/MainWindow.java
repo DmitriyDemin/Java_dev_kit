@@ -27,7 +27,7 @@ public class MainWindow  extends JFrame implements CanvasRepainrListener {
         setBounds(POS_X, POS_Y, WINDOW_WIDHT, WINDOW_HEIGHT);
         setTitle("newGame");
         for (int i = 0; i<sprites.length; i++){
-            sprites[i] = new Triangle();
+            sprites[i] = new pngFile();
         }
 
 

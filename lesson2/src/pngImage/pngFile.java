@@ -3,21 +3,29 @@ package pngImage;
 import common.MainCanvas;
 import common.Sprite;
 
+import javax.imageio.ImageIO;
+import javax.swing.*;
 import java.awt.*;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.FileReader;
 import java.util.Random;
 
-public class Triangle extends Sprite {
+public class pngFile extends Sprite {
     private static Random rnd = new Random();
     private final Color color;
     private float vX;
     private float vY;
 
-    Triangle(){
-        halfHeight = 20 + (float)(Math.random()*50f);
-        halfWigth = halfHeight*2;
-        color = new Color(rnd.nextInt());
-        vX = 200f + (float)(Math.random()*200f);
-        vY = 100f + (float)(Math.random()*200f);
+
+
+    add(picLabel);
+
+
+    pngFile(){
+        BufferedImage myPicture = ImageIO.read(new File("src/repositoriy/github.png"));
+        JLabel picLabel = new JLabel(new ImageIcon(myPicture));
+
     }
 
     @Override
