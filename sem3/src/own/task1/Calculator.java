@@ -6,93 +6,58 @@ sum(), multiply(), divide(), subtract(). Параметры этих метод�
 package own.task1;
 
 public class Calculator {
-        private static final ICalculator<Number, Number> SUMMATION = new Summation();
-        private static final ICalculator<Number, Number> SUBTRACTION = new Subtraction();
-        private static final ICalculator<Number, Number> MULTIPLICATION = new Multiplication();
-        private static final ICalculator<Number, Number> DIVISION = new Division();
 
         public static <T extends Number, U extends Number> Double sum(T a, U b) {
-
-            return SUMMATION.action(a, b);
+            Double num1 = a.doubleValue();
+            Double num2 = b.doubleValue();
+            return num1 + num2;
         }
 
         public static <T extends Number, U extends Number> Double subtract(T a, U b) {
-            return SUBTRACTION.action(a, b);
+            Double num1 = a.doubleValue();
+            Double num2 = b.doubleValue();
+            return num1 - num2;
         }
 
         public static <T extends Number, U extends Number> Double multiply(T a, U b) {
-            return MULTIPLICATION.action(a, b);
+            Double num1 = a.doubleValue();
+            Double num2 = b.doubleValue();
+            return num1 * num2;
         }
 
         public static <T extends Number, U extends Number> Double divide(T a, U b) {
-            return DIVISION.action(a, b);
+            Double num1 = a.doubleValue();
+            Double num2 = b.doubleValue();
+            if (num2 == 0) throw new ArithmeticException("деление на нуль");
+            return num1 / num2;
         }
 
 
 
         public static void main(String[] args) {
-            System.out.println("------------------------sum------------------------");
-            System.out.println(sum(5, 6));
-            System.out.println(sum(5, 6.8));
-            System.out.println(sum(5.5, 6.9));
-            System.out.println("------------------------subtract------------------------");
-            System.out.println(subtract(5, 6));
-            System.out.println(subtract(5, 6.8));
-            System.out.println(subtract(5.5, 6.9));
-            System.out.println("------------------------multiply------------------------");
-            System.out.println(multiply(5, 6));
-            System.out.println(multiply(5, 6.8));
-            System.out.println(multiply(5.5, 6.9));
-            System.out.println("------------------------division------------------------");
-            System.out.println(divide(5, 6));
-            System.out.println(divide(5, 6.8));
+            System.out.println("sum");
+            System.out.println(sum(3, 8));
+            System.out.println(sum(3, 7.7));
+            System.out.println(sum(3.5, 7.7));
+            System.out.println("subtract");
+            System.out.println(subtract(13, 8));
+            System.out.println(subtract(3, 7.7));
+            System.out.println(subtract(3.5, 7.7));
+            System.out.println("multiply");
+            System.out.println(multiply(3, 8));
+            System.out.println(multiply(3, 7.7));
+            System.out.println(multiply(3.5, 7.85));
+            System.out.println("division");
+            System.out.println(divide(3, 8));
+            System.out.println(divide(3, 7.7));
             try {
-                System.out.println(divide(5.5, 0));
+                System.out.println(divide(3.5, 0));
             } catch (ArithmeticException e) {
                 System.out.println(e.getMessage());
             }
         }
-    }
-
-    interface ICalculator<T extends Number, U extends Number> {
-        Double action(T a, U b);
-    }
+}
 
 
-    class Summation implements ICalculator<Number, Number> {
-        @Override
-        public Double action(Number a, Number b) {
-            double num1 = a.doubleValue();
-            double num2 = b.doubleValue();
-            return num1 + num2;
-        }
-    }
-    class Subtraction implements ICalculator<Number, Number> {
-        @Override
-        public Double action(Number a, Number b) {
-            double num1 = a.doubleValue();
-            double num2 = b.doubleValue();
-            return num1 - num2;
-        }
-    }
-    class Multiplication implements ICalculator<Number, Number> {
-        @Override
-        public Double action(Number a, Number b) {
-            double num1 = a.doubleValue();
-            double num2 = b.doubleValue();
-            return num1 * num2;
-        }
-    }
-    class Division implements ICalculator<Number, Number> {
-        @Override
-        public Double action(Number a, Number b) {
-            double num1 = a.doubleValue();
-            double num2 = b.doubleValue();
-            if (num2 == 0) {
-                throw new ArithmeticException("На нуль делить нельзя");
-            }
-            return num1 / num2;
-        }
-    }
 
 
