@@ -31,8 +31,9 @@ public class GameBoard {
     return board;
     }
 
-
     public List<Door> getBoard() {
         return board;
     }
+
+
 }
